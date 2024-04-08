@@ -1,11 +1,11 @@
 <template>
-  <div class="container mt-5 flex justify-center ">
-    <Tabs default-value="comp" class="flex flex-col justify-center">
-      <TabsList>
-        <TabsTrigger value="comp">Модель композиции приложения</TabsTrigger>
-        <TabsTrigger value="cocomo">Модель ранней архитектуры</TabsTrigger>
-      </TabsList>
-      <TabsContent value="comp">
+  <Tabs default-value="comp" class="flex flex-col justify-center">
+    <TabsList>
+      <TabsTrigger value="comp">Модель композиции</TabsTrigger>
+      <TabsTrigger value="cocomo">Модель ранней архитектуры</TabsTrigger>
+    </TabsList>
+    <TabsContent value="comp">
+      <div class="flex flex-col container">
         <Card>
           <CardHeader>
             <CardTitle>Модель композиции приложения</CardTitle>
@@ -16,7 +16,7 @@
               <Input class="w-[200px] ml-5" v-model="cocomo.baseObj"></Input>
             </div>
 
-            <div class="flex flex-row items-center mb-5">
+            <div class="flex flex-row items-center justify-between mb-5">
               <span>Процент повторного использования</span>
               <Input class="w-[200px] ml-5" v-model="cocomo.reuse"></Input>
             </div>
@@ -56,9 +56,9 @@
             </div>
           </CardContent>
         </Card>
-      </TabsContent>
-    </Tabs>
-  </div>
+      </div>
+    </TabsContent>
+  </Tabs>
 </template>
 
 <script lang="ts" setup>
@@ -66,6 +66,6 @@
 const cocomo = useMyCocomoStore()
 
 const team = () => Math.ceil(cocomo.labor / cocomo.time)
-const budget = () =>  team() * +cocomo.wage * cocomo.time / 1000
+const budget = () => team() * +cocomo.wage * cocomo.time / 1000
 
 </script>
