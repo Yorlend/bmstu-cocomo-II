@@ -11,17 +11,17 @@
             <CardTitle>Модель композиции приложения</CardTitle>
           </CardHeader>
           <CardContent>
-            <div class="flex flex-row items-center justify-between mb-5">
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-5">
               <span>Количество объектных точек</span>
               <Input class="w-[200px] ml-5" v-model="cocomo.baseObj"></Input>
             </div>
 
-            <div class="flex flex-row items-center justify-between mb-5">
-              <span>Процент повторного использования</span>
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-5">
+              <span class="ml-10 md:ml-0">Процент повторного использования</span>
               <Input class="w-[200px] ml-5" v-model="cocomo.reuse"></Input>
             </div>
 
-            <div class="flex flex-row items-center justify-between mb-5">
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-5">
               <span>Оценка скорости разработки</span>
               <Select v-model="cocomo.prod">
                 <SelectTrigger class="w-[200px] ml-5">
@@ -38,7 +38,7 @@
                 </SelectContent>
               </Select>
             </div>
-            <div class="flex flex-row items-center justify-between mb-5">
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-5">
               <span>Зарплата разработчика, р.</span>
               <Input class="w-[200px] ml-5" v-model="cocomo.wage"></Input>
             </div>
@@ -66,7 +66,7 @@
               <CardTitle>Параметры для метода функциональных точек</CardTitle>
             </CardHeader>
             <CardContent>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span>Внешние вводы (EI)</span>
                 <div class="flex flex-row ml-5">
                   <div class="flex flex-col items-center ml-2">
@@ -83,7 +83,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span>Внешние выводы (EO)</span>
                 <div class="flex flex-row ml-5 mt-2">
                   <Input class="w-[60px] ml-2" v-model="cocomo.eo.easy"></Input>
@@ -91,7 +91,7 @@
                   <Input class="w-[60px] ml-2" v-model="cocomo.eo.high"></Input>
                 </div>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span>Внешние запросы (EQ)</span>
                 <div class="flex flex-row ml-5 mt-2">
                   <Input class="w-[60px] ml-2" v-model="cocomo.eq.easy"></Input>
@@ -99,7 +99,7 @@
                   <Input class="w-[60px] ml-2" v-model="cocomo.eq.high"></Input>
                 </div>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span>Внутр. логич. файлы (ILF)</span>
                 <div class="flex flex-row ml-5 mt-2">
                   <Input class="w-[60px] ml-2" v-model="cocomo.ilf.easy"></Input>
@@ -107,7 +107,7 @@
                   <Input class="w-[60px] ml-2" v-model="cocomo.ilf.high"></Input>
                 </div>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span>Внешн. интерф. файлы (EIF)</span>
                 <div class="flex flex-row ml-5 mt-2">
                   <Input class="w-[60px] ml-2" v-model="cocomo.eif.easy"></Input>
@@ -115,11 +115,11 @@
                   <Input class="w-[60px] ml-2" v-model="cocomo.eif.high"></Input>
                 </div>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Надежность и уровень сложности системы (RCPX)</span>
                 <Select v-model="cocomo.rcpx">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -134,11 +134,11 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Повторное использование компонентов (RUSE)</span>
                 <Select v-model="cocomo.ruse">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -151,11 +151,11 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Возможности персонала (PERS)</span>
                 <Select v-model="cocomo.pers">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -170,11 +170,11 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Сложность платформы (PDIF)</span>
                 <Select v-model="cocomo.pdif">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -187,11 +187,11 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Опыт работы в разработке систем подобного типа (PREX)</span>
                 <Select v-model="cocomo.prex">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -206,11 +206,11 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Использование инструментальных средств поддержки (FCIL)</span>
                 <Select v-model="cocomo.fcil">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -225,19 +225,19 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[200px]">Требуемые сроки разработки (SCED)</span>
                 <Select v-model="cocomo.sced">
                   <SelectTrigger class="w-[196px] ml-5 mt-2">
-                    <SelectValue placeholder="выберите значение"/>
+                    <SelectValue placeholder="выберите значение" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
                       <SelectItem value="1.43">очень низкий</SelectItem>
                       <SelectItem value="1.14">низкий</SelectItem>
                       <SelectItem value="1.0">номинальный</SelectItem>
-<!--                      <SelectItem value="1.0">высокий</SelectItem>-->
-<!--                      <SelectItem value="1.0">очень высокий</SelectItem>-->
+                      <!--                      <SelectItem value="1.0">высокий</SelectItem>-->
+                      <!--                      <SelectItem value="1.0">очень высокий</SelectItem>-->
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -253,59 +253,59 @@
             <CardContent>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Передача данных</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.dataTrans"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.dataTrans" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Распределенная разработка</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.distribDev"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.distribDev" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Производительность</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.performance"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.performance" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Эксплуатационные ограничения</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.opReq"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.opReq" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Оперативный ввод данных</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.opIO"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.opIO" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Частота транзакций</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.transFreq"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.transFreq" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Эффективность работы конечных пользователей</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.endUserEfficiency"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.endUserEfficiency" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Оперативное обновление</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.opUpdate"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.opUpdate" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Сложность обработки</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.procDif"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.procDif" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Повторная используемость</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.reusability"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.reusability" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Легкость инсталяции</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.instEase"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.instEase" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Легкость эксплуатации</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.useEase"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.useEase" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Количество возможных установок на различных платформах</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.crossPlat"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.crossPlat" />
               </div>
               <div class="flex flex-row items-center justify-between">
                 <span class="w-[200px]">Простота изменений (гибкость)</span>
-                <Input class="ml-5 mt-2 w-[80px]" v-model="cocomo.easeEdit"/>
+                <Input class="ml-5 mt-2 w-[60px]" v-model="cocomo.easeEdit" />
               </div>
             </CardContent>
           </Card>
@@ -318,12 +318,8 @@
             <CardContent>
               <div class="flex flex-col items-center">
                 <div class="flex flex-col justify-between">
-                  <Language v-for="item in cocomo.languages"
-                            :code="item.code"
-                            :lang="item.lang"
-                            :key="item.lang"
-                            class="mb-2"
-                  />
+                  <Language v-for="item in cocomo.languages" :code="item.code" :lang="item.lang" :key="item.lang"
+                    class="mb-2" />
                 </div>
                 <Dialog>
                   <DialogTrigger as-child class="mt-2">
@@ -361,7 +357,7 @@
               <CardTitle>Факторы масштаба</CardTitle>
             </CardHeader>
             <CardContent>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Прецедентность (PREC)</span>
                 <Select v-model="cocomo.prec">
                   <SelectTrigger class="w-[200px]">
@@ -378,7 +374,7 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Гибкость (FLEX)</span>
                 <Select v-model="cocomo.flex">
                   <SelectTrigger class="w-[200px]">
@@ -395,7 +391,7 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Архитектура и разрешение рисков (RESL)</span>
                 <Select v-model="cocomo.resl">
                   <SelectTrigger class="w-[200px]">
@@ -412,7 +408,7 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Сработанность команды (TEAM)</span>
                 <Select v-model="cocomo.team">
                   <SelectTrigger class="w-[200px]">
@@ -429,7 +425,7 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Зрелость процессов (PMAT)</span>
                 <Select v-model="cocomo.pmat">
                   <SelectTrigger class="w-[200px]">
@@ -446,7 +442,7 @@
                   </SelectContent>
                 </Select>
               </div>
-              <div class="flex flex-row items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <span class="w-[150px] mr-10">Зарплата разработчика, р.</span>
                 <Input v-model="cocomo.wage" class="w-[200px]" />
               </div>
@@ -476,7 +472,7 @@
 
 <script lang="ts" setup>
 
-import {Button} from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import {
   DialogContent,
   DialogDescription,
@@ -485,7 +481,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from "~/components/ui/dialog";
-import {Label} from "~/components/ui/label";
+import { Label } from "~/components/ui/label";
 
 const lang = ref<string>("")
 const code = ref<string>("")

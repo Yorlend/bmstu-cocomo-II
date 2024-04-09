@@ -20,10 +20,10 @@ const onDelete = () => {
   <div class="flex flex-row justify-between items-center">
     <div class="flex flex-row justify-between">
       <span class="mr-5 underline w-[100px]">{{ lang }}</span>
-      <span>{{ code }} %</span>
+      <span>{{ code }}%</span>
     </div>
     <div>
-      <Button class="ml-10" @click="onDelete">
+      <Button class="ml-8" @click="onDelete">
         Удалить
       </Button>
     </div>
