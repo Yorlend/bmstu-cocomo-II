@@ -39,7 +39,7 @@ export const useMyCocomoStore = defineStore({
         code: 60
       },
       {
-        lang: 'JavaScript',
+        lang: 'SQL',
         code: 30
       },
       {
@@ -72,16 +72,24 @@ export const useMyCocomoStore = defineStore({
       mid: 0,
       high: 0
     },
-    optimal: {
-      assembler: 172,
-      c: 148,
-      cplusplus: 60,
-      csharp: 59,
-      j2ee: 61,
-      javascript: 56,
-      plsql: 46,
-      visualbasic: 50
-    }
+    fpToKLoC: {
+      'Assembler': 320,
+      'C': 128,
+      'COBOL': 106,
+      'Fortran': 105,
+      'Pascal': 91,
+      'C++': 64,
+      'C#': 53,
+      'Java': 53,
+      'Ada95': 49,
+      'Visual Basic': 32,
+      'Visual C++': 34,
+      'Delphi 5': 18,
+      'Perl': 21,
+      'Prolog': 64,
+      'SQL': 13,
+      'Lisp': 64
+    } as {[key: string]: number},
   }),
   getters: {
     nop(state) {
@@ -94,6 +102,27 @@ export const useMyCocomoStore = defineStore({
 
     time(state) {
       return 3 * Math.pow((+state.baseObj * ((100 - +state.reuse) / 100)) / +state.prod, 0.33 + 0.2 * (1 - 1.01))
+    },
+
+    params(state) {
+      return +state.dataTrans +
+            +state.distribDev +
+            +state.performance +
+            +state.opReq +
+            +state.opIO +
+            +state.transFreq +
+            +state.endUserEfficiency +
+            +state.opUpdate +
+            +state.procDif +
+            +state.reusability +
+            +state.instEase +
+            +state.useEase +
+            +state.crossPlat +
+            +state.easeEdit
+    },
+
+    earch(state) {
+      return +state.pers * +state.rcpx * +state.ruse * +state.pdif * +state.prex * +state.fcil * +state.sced
     }
   }
 })

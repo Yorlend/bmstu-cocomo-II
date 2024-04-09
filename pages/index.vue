@@ -454,13 +454,13 @@
             </CardHeader>
             <CardContent>
               <div class="flex flex-col items-center justify-between">
-                <span>Количество функциональных точек: </span>
-                <span class="mt-2">Показатель степени p:</span>
-                <span class="mt-2">Размер кода: KLoC</span>
-                <span class="mt-2">Трудозатраты: человеко-месяцев</span>
-                <span class="mt-2">Время: мес.</span>
-                <span class="mt-2">Команда: чел.</span>
-                <span class="mt-2">Бюджет: тыс. р.</span>
+                <span>Количество функциональных точек: {{ funcPoints() }}</span>
+                <span class="mt-2">Показатель степени p: {{ calcP() }}</span>
+                <span class="mt-2">Размер кода: {{ KLoC() }} KLoC</span>
+                <span class="mt-2">Трудозатраты: {{ Math.round(labor() * 100) / 100 }} человеко-месяцев</span>
+                <span class="mt-2">Время: {{ Math.round(time() * 100) / 100 }} мес.</span>
+                <span class="mt-2">Команда: {{ earlyTeam() }} чел.</span>
+                <span class="mt-2">Бюджет: {{ Math.round(earlyBudget() * 100) / 100 }} тыс. р.</span>
               </div>
             </CardContent>
           </Card>
@@ -492,7 +492,7 @@ const team = () => Math.ceil(cocomo.labor / cocomo.time)
 const budget = () => team() * +cocomo.wage * cocomo.time / 1000
 
 const onAddLanguage = () => {
-  if (lang.value.trim().length > 0 && !isNaN(+code.value) && +code.value != 0) {
+  if (lang.value.trim().length > 0 && !isNaN(+code.value) && +code.value != 0 && lang.value in cocomo.fpToKLoC) {
     cocomo.languages.push({
       lang: lang.value,
       code: +code.value,
@@ -501,6 +501,42 @@ const onAddLanguage = () => {
     lang.value = ""
     code.value = ""
   }
+}
+
+const funcPoints = () => {
+  const sumIO = (+cocomo.ei.easy * 3 + +cocomo.eo.easy * 4 + +cocomo.eq.easy * 3 + +cocomo.ilf.easy * 7 + +cocomo.eif.easy * 5)
+    + (+cocomo.ei.mid * 4 + +cocomo.eo.mid * 5 + +cocomo.eq.mid * 4 + +cocomo.ilf.mid * 10 + +cocomo.eif.mid * 7)
+    + (+cocomo.ei.high * 6 + +cocomo.eo.high * 7 + +cocomo.eq.high * 6 + +cocomo.ilf.high * 15 + +cocomo.eif.high * 10)
+
+  return sumIO * (0.65 + 0.01 * cocomo.params)
+}
+
+const KLoC = () => {
+  let res = 0
+  cocomo.languages.forEach(lang => {
+    res += funcPoints() * lang.code / 100 * cocomo.fpToKLoC[lang.lang]
+  })
+  return Math.round(res / 10) / 100
+}
+
+const calcP = () => {
+  return (+cocomo.prec + +cocomo.flex + +cocomo.resl + +cocomo.team + +cocomo.pmat) / 100 + 1.01
+}
+
+const labor = () => {
+  return 2.45 * cocomo.earch * Math.pow(KLoC(), calcP())
+}
+
+const time = () => {
+  return 3.0 * Math.pow(labor(), 0.33 + 0.2 * (calcP() - 1.01))
+}
+
+const earlyTeam = () => {
+  return Math.ceil(labor() / time())
+}
+
+const earlyBudget = () => {
+  return earlyTeam() * +cocomo.wage * time() / 1000
 }
 
 </script>
